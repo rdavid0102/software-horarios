@@ -1,0 +1,608 @@
+body
+{	padding-top:38px;
+	background:;
+}
+a
+{
+	color:;
+}
+.txt_descripcion{
+	text-align: justify;
+	font-size: 12px;
+}
+.blue{
+	background: blue;
+}
+
+.carro
+{
+font-size: 2em;
+}
+
+h1
+{
+color:white;
+text-shadow: 5px 5px 10px rgba(255,255,255,0.5);
+
+}
+.titulo
+{
+color:black;
+text-shadow: 5px 5px 10px rgba(255,255,255,0.5);
+font-size:12px;
+font-weight: bold;
+text-align: center;
+}
+.texto
+{
+color:black;
+text-shadow: 5px 5px 10px rgba(255,255,255,0.5);
+font-size:12px;
+text-align: center;
+}
+
+.title_compras{
+
+}
+.cantidad
+{
+
+	text-align: center;
+}
+#nav_top
+{
+	background: #00b0f3;
+	padding: 0.8em;
+	font-size: 0.9em;
+	color:white;
+}
+.resumen,.text-goticel
+{
+	color:#00b0f3;
+}
+
+.resumen
+{
+	font-size: 12px;
+	color:#00b0f3;
+
+}
+.resumen_fac
+{
+	font-size: 12px;
+	color:#00b0f3;
+	font-weight: bold;
+}
+.resumen_fac_md
+{
+	font-size: 17px;
+	color:#00b0f3;
+	font-weight: bold;
+}
+.resumen_fac_lg
+{
+	font-size: 23px;
+	color:#00b0f3;
+	font-weight:;
+}
+.resumen_fac_15
+{
+	font-size: 15px;
+	color:#00b0f3;
+	font-weight: bold;
+}
+.numero_fac
+{
+	font-size: 17px;
+	color:#00b0f3;
+	font-weight: bold;
+}
+.factura
+{
+	padding: 2em;
+	border-radius: 1em;
+	border: 0.1em solid gray; 
+}
+
+
+.fac
+{
+	padding: 2em;
+
+}
+.xs 
+{
+	height:30px;
+	font-size: 12px;
+	padding: 12em;
+	margin-bottom: 10em;
+}
+.ico_fc
+{
+	height: 18px;
+	width: 18px;
+	background: url(./imagenes/fc.png);
+}
+.txt_fac
+{
+font-size: 12px;
+}
+
+.txt_fac_min
+{
+font-size: 11px;
+}
+.txt_fac_md
+{
+font-size: 14px;
+}
+.txt_fac_xs
+{
+font-size: 9px;
+}
+.txt_fac_xs_extrem
+{
+font-size: 5px;
+}
+
+nav a{
+
+
+-ms-transition: all 0.5s ease-in;
+-moz-transition: all 0.5s ease-in;
+-o-transition: all 0.5s ease-in;
+-webkit-transition: all 0.5s ease-in;
+transition: all 0.5s ease-in;
+}
+
+section#principal{
+background:	;
+border-radius: 0.5em;
+margin-top: 50px;
+
+
+}
+
+.navbar
+{
+margin-bottom: 0;	
+
+}
+
+.jumbotron-main
+{
+background: #e3f2f9;
+font-style: bold;
+color: white;
+
+}
+
+footer{
+color: white;
+font-size: 0.85em;
+padding:5em;
+background: #e3f2f9;
+text-shadow: 5px 5px 10px rgba(255,255,255,0.5);
+margin-top: 3em;
+box-shadow:         0px 0px 10px rgba(74, 74, 74, 0.75);
+
+
+}
+
+
+
+header{
+	/*background: #FCC4F7;xolor bueno*/
+	color: gray;
+	background:#e3f2f9;
+	
+
+}
+
+
+div#usuarios
+{
+		border: 0.1em solid gray; 
+		border-radius: 0.5em;
+}
+div#producto{
+	width: 100%;
+	min-height: 500px;
+	border: 0.2em solid #DDD;
+	padding: 1%;
+	margin-top: 50px;
+	border-radius: 1em;
+	background:	#f7fdff;
+}
+
+
+section#producto_detalle
+{
+	width: 88%;
+	
+	padding:;
+	margin-top: 50px;
+	border-radius: 0.5em;
+	background:	#f7fdff;
+}
+section#producto_detalle2
+{
+	width: 88%;
+	
+	padding: 1em;
+	margin-top: 50px;
+	border-radius: 0.5em;
+	background:	#f7fdff;
+}
+section#encabezado
+{
+	padding: 0.5em;
+}
+
+div#descripcion
+{
+	background:;
+	border-radius: 1em;
+	border: 0.1em solid gray; 
+	/* efecto de movimiento*/
+	-webkit-transition: all 1s ease-in-out;
+	-moz-transition: all 1s ease-in-out;
+}
+.navsegun
+{
+	background: white;
+	border-bottom: 0.1em solid #F5F1F5;
+}
+
+.producto{
+	
+	background:white;
+
+	border-radius: 0.5em;
+	
+	/* efecto de movimiento*/
+	
+
+}
+
+.producto1{
+	background:;
+	padding: 0.4em;
+	border-radius: 0.5em;
+	/* efecto de movimiento*/
+	-webkit-transition: all 1s ease-in-out;
+	-moz-transition: all 1s ease-in-out;
+
+}
+
+.productocarro{
+	background:white;
+	padding:0.5em;
+	border-radius: 0.5em;
+	border: 0.1em solid #F5F1F5; 
+	 
+
+	/* efecto de movimiento*/
+	-webkit-transition: all 1s ease-in-out;
+	-moz-transition: all 1s ease-in-out;
+
+}
+
+/* al pasar el mouse*/
+.producto:hover
+{
+/* efecto de acercamiento*/
+	
+
+}
+.producto img,.producto1 img{
+
+	height: 130px;
+	width:120px;
+
+	-webkit-box-shadow: 0px 0px 10px rgba(74, 74, 74, 0.75);
+	-moz-box-shadow:    0px 0px 10px rgba(74, 74, 74, 0.75);
+	box-shadow:         0px 0px 10px rgba(74, 74, 74, 0.75);
+	-webkit-transition: all 1s ease-in-out;
+	-moz-transition: all 1s ease-in-out;
+}
+.producto girarimg:hover{
+	-webkit-transform: rotate(355deg);
+	-moz-transform: rotate(355deg);
+}
+
+div#botoncomprar
+{
+	padding: 1em;
+}
+div#usuario
+{
+	padding: 0.5em;
+	border-bottom: 0.5em;
+}
+div#botonver
+{
+	padding: 1em;
+}
+
+section#principal1
+{
+
+margin-right:2.5em; 
+margin-left:0.5em;
+
+}
+
+div#error
+
+{
+color: red;
+font-size: 11px;
+margin-bottom: 0em;
+
+}
+.recupera_usuario
+{
+
+	padding: 4.5em;
+}
+
+div#formu
+{
+padding: 2em;
+
+}
+.sesion
+{
+	text-align: left;
+
+}
+
+
+
+
+div#box {
+	clear: both;
+	margin: 0 50px;
+}
+
+label#box {
+  width: 200px;
+  border-radius: 3px;
+  border: 1px solid #D1D3D4
+}
+
+/* hide input */
+input.radio:empty {
+	margin-left: -999px;
+}
+
+/* style label */
+input.radio:empty ~ label {
+	position: relative;
+	float: left;
+	line-height: 2.5em;
+	text-indent: 3.25em;
+	margin-top: 2em;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+input.radio:empty ~ label:before {
+	position: absolute;
+	display: block;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	content: '';
+	width: 2.5em;
+	background: #D1D3D4;
+	border-radius: 3px 0 0 3px;
+}
+
+/* toggle hover */
+input.radio:hover:not(:checked) ~ label:before {
+	content:'\2714';
+	text-indent: .9em;
+	color: #C2C2C2;
+}
+
+input.radio:hover:not(:checked) ~ label {
+	color: #888;
+}
+
+/* toggle on */
+input.radio:checked ~ label:before {
+	content:'\2714';
+	text-indent: .9em;
+	color: #9CE2AE;
+	background-color: #4DCB6D;
+}
+
+input.radio:checked ~ label {
+	color: #777;
+}
+
+/* radio focus */
+
+.input-xs{
+	height:24px;
+	font-size: 12px;
+	padding: 0.3em;
+	margin-bottom: 0.7em;
+
+}
+.label-xs
+{
+	font-size: 12.5px;
+	height: 1em;
+	font-weight:;
+	color:;
+	
+}
+
+.label-goti
+{
+	font-size: 15px;
+	height: 1em;
+	font-weight:;
+	color:#00b0f3;
+	
+}
+.label-goti-green
+{
+	font-size: 15px;
+	height: 1em;
+	font-weight:;
+	color:#00b0f3;
+	
+}
+
+.en{
+height: 3.7em;
+
+}
+
+.lados
+{
+
+	margin-right: -1em;
+	margin-left: -1em;
+}
+
+.enco
+{
+
+	margin-right: -0.7em;
+	margin-left: -0.7em;
+}
+hr{
+	margin-top: 0.1px;
+	margin-bottom: 2px;
+	border-top: 2px solid #e3f2f9;
+	border-bottom: 1px solid #e3f2f9;
+}
+.texto
+{
+
+	text-align: justify;
+	font-size: 15px;
+}
+
+
+ /*prog radio*/
+/* Ocultar los botones de radio */
+#accordion label + input[type='radio'] {
+    display: none;
+}   
+ 
+/* ocultar el contenido de forma predeterminada */
+#accordion .content {
+    display:none;
+ 
+    padding:10px;
+    font-family:;
+    font-size:;
+    line-height:;
+ 	border-radius: 0.5em;
+    background-color:;
+}
+ 
+/* Mostrar las cajas de contenido cuando se comprueban los botones de radio*/
+#accordion label + input[type='radio']:checked + .content {
+    display:block;
+}
+/*aca termina prog radio*/
+
+
+
+/* acordeon estilos */
+#accordion_checkbox, #accordion{
+    margin:0px auto;
+    padding:0;
+    width:auto;
+ 
+    }   
+ 
+#accordion_checkbox li, #accordion li {
+    list-style:none;
+    width:auto;
+    }   
+ 
+#accordion  li label, .accordion {
+    padding:1px;
+    display:block;
+ 
+    font-family: 'Bree Serif', 'serif';
+    font-size:;
+    line-height:30px;
+    color:white;
+    border-radius: 0.2em;
+ 
+    background-color:#d2eac9;
+    border-bottom: solid 8px #cae3c1;
+    }   
+
+
+/*aca termina estilos acordeones*/
+
+
+/*prog _checkbox*/
+
+ 
+/* mostrar el contenido de forma predeterminada */
+#accordion_checkbox .content {
+    display:block;
+ 
+    padding:10px;
+    font-family:;
+    font-size:;
+    line-height:;
+ 	border-radius:;
+    background-color:;
+}
+ 
+/* Mostrar las cajas de contenido cuando se comprueban los botones de radio*/
+
+#accordion_checkbox input[type='checkbox']:checked + .content {
+  		display: none;
+}
+
+
+ /*aca termina prog_checkbox*/
+
+
+
+
+section#galeria
+{
+	width: 70%;
+}
+div#barra
+{
+	width: 30%;
+}
+
+@media(max-width:1024px){
+
+.producto img{
+
+
+
+}
+
+div#btnelim
+{
+
+border-radius: 50%;	
+padding: 20em;
+background: blue;
+}
+}
+						
+}
+						
+}
