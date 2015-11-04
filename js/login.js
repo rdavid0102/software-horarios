@@ -249,12 +249,8 @@ var regex = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
 });
 
 
-//////////////////menu_buscarprofesor
-$(".menu_buscarprofesor").click(function(e){
-$('#myModal').modal('show');
-});
-////////
-function buscar_profesor()
+///////////////////////funcion cargar el menu con la lista de profesores
+function buscar_profesor(url,id_carga)
 {
 		var apellidos=$('#text_buscar_profesor').val();
 		$.post('./controler/cargar_lista_profesor.php',{
@@ -272,7 +268,7 @@ function buscar_profesor()
 		            	var nuevaFila="<tr>";
 						for(i=0; i<json.length; i++){
 							nuevaFila="<tr>";
-						 	nuevaFila+="<td><a href="+"'./carga_profesor.php?id="+(json[i].id)+"'>"+(json[i].id)+"</a></td> <td>"+(json[i].nombres)+"</td> <td>"+(json[i].apellidos)+"</td> <td>"+(json[i].area)+"</td>";
+						 	nuevaFila+="<td><a href="+"'./"+url+".php?id="+(json[i].id)+"&id_carga="+id_carga+"'>"+(json[i].id)+"</a></td> <td>"+(json[i].nombres)+"</td> <td>"+(json[i].apellidos)+"</td> <td>"+(json[i].area)+"</td>";
 							nuevaFila+="</tr>";
 		           		 	$("#tabla_profesores").append(nuevaFila);
 		           		 	nuevaFila=" ";
@@ -289,17 +285,6 @@ function buscar_profesor()
 }
 
 //////
-///////////////////buscar_profesor_modal
-$(".buscar_profesor_modal").click(function(e){
-buscar_profesor();
-});
-$("#text_buscar_profesor").keyup(function(e){
-	if(e.keyCode==13){
-		buscar_profesor();
-	}
-});
-
-////////////////////////////////////////cargar datos del profesor en carga
  // Leer los datos GET de nuestra pagina y devolver un array asociativo (Nombre de la variable GET => Valor de la variable).
 function getUrlVars()
 {
@@ -313,10 +298,28 @@ function getUrlVars()
     }
     return vars;
 }
-
-/////////////////iniciar_la busqueda en el menu_busqueda_profesor
+///////////////
+//////////////////cargar_menu_buscarprofesor
+$("#menu_buscarprofesor").click(function(e){
+	e.preventDefault();
+		$('#myModal_buscar_profesor').modal('show');
+			var url=$(this).attr('data-url');
+			var id_carga = getUrlVars()['id_carga'];
+				buscar_profesor(url,id_carga);
+});
+////////
+///////////////////buscar_profesor_modal
+$(".buscar_profesor_modal").click(function(e){
 buscar_profesor();
-//////////////////////
+});
+$("#text_buscar_profesor").keyup(function(e){
+	if(e.keyCode==13){
+		buscar_profesor();
+	}
+});
+
+
+//////////
 
 
 
@@ -325,35 +328,5 @@ buscar_profesor();
 
 }
 $(document).on('ready',inicio);
-///////////cargar_materias
-$(function() {
-				
-				 $.post('./controler/cargar_materias.php',{
-				
-		}, function(a){
-			var json = eval(a);
-			$("#combo_asignaturas").empty();
 
-				$("<option>Seleccionar</option>").appendTo("#combo_asignaturas");
-
-			for(i=0; i<json.length; i++){
-				$("<option value="+(json[i].id_materia)+">"+(json[i].nom_materia)+"</option>").appendTo("#combo_asignaturas");
-				}
-		});
-
-		$.post('./controler/cargar_cursos.php',{
-				
-		}, function(e){
-			var json = eval(e);
-			$("#combo_cursos").empty();
-
-				$("<option>Seleccionar</option>").appendTo("#combo_cursos");
-
-			for(i=0; i<json.length; i++){
-				$("<option value="+(json[i].id_curso)+">"+(json[i].nom_curso)+"</option>").appendTo("#combo_cursos");
-				}
-		});	 
-
-})
-//////////////
 

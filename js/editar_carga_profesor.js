@@ -56,7 +56,7 @@ $("#error_combo_asignatura").text('*Selecciona una asignatura');
 										return con
 }
 
-$("#asignar_carga").click(function(e){
+$("#editar_carga").click(function(e){
 var combo_asignaturas=$("#combo_asignaturas").val();
 var id_profesor=$("#id_profesor").val();
 var horas_semana=$("#horas_semana").val();
@@ -76,7 +76,7 @@ var aula=$("#aula").val();
 				horas_semana:horas_semana
 
 				},function(a){
-					alert('La carga academica ha sido asignada con exito')
+					alert('La carga academica ha sido asignada con exito');
 					location.href="carga_profesor.php?id="+id_profesor;
 
 				});
@@ -108,12 +108,8 @@ var aula=$("#aula").val();
 							
 });
 
-}
-$(document).on('ready',inicio);
-////////////////
-
-///////////cargar_materias
-$(function() {
+///////////cargar_materias en los comobo//////////automato
+function cargar_materia_combo(j,x) {
 				
 	$.post('./controler/cargar_materias.php',{		
 		}, function(a){
@@ -125,6 +121,7 @@ $(function() {
 			for(i=0; i<json.length; i++){
 				$("<option value="+(json[i].id_materia)+">"+(json[i].nom_materia)+"</option>").appendTo("#combo_asignaturas");
 				}
+				$('#combo_asignaturas > option[value="'+x+'"]').attr('selected', 'selected');
 		});
 
 		$.post('./controler/cargar_cursos.php',{
@@ -138,18 +135,12 @@ $(function() {
 			for(i=0; i<json.length; i++){
 				$("<option value="+(json[i].id_curso)+">"+(json[i].nom_curso)+"</option>").appendTo("#combo_cursos");
 				}
+				$('#combo_cursos > option[value="'+j+'"]').attr('selected', 'selected');
 		});	 
 
-})
+}
 //////////////
 
-
-
-
-
-
-
-////////////
 ////////////////funcion para capturar el valor pasado por get
 function getUrlVars()
 {
@@ -165,7 +156,39 @@ function getUrlVars()
 }
 ////////////////////
 ///////////////////cargar carga academica de cada profesor pasado por get_ y llenado de tabla y datos
-$(function() {
+function cargar_carga_materia() {
+
+if(typeof(getUrlVars()['id_carga']) != "undefined"){ 
+	var id = getUrlVars()['id_carga'];
+			$.post('./controler/id_carga_profesor.php',{
+				id:id
+			},function(a){
+				//alert(a);
+			var json = eval(a);
+	        
+	            	document.form_carga_profesor.nombres.value=(json[0].nombres);
+					document.form_carga_profesor.apellidos.value=(json[0].apellidos);
+					document.form_carga_profesor.area.value=(json[0].area);
+					document.form_carga_profesor.id_profesor.value=(json[0].id);
+					document.form_carga_profesor.aula.value=(json[0].num_salon);
+					document.form_carga_profesor.horas_dia.value=(json[0].n_horas_day);
+					document.form_carga_profesor.horas_semana.value=(json[0].n_horas_week);
+					//////cargamos los combos
+					var a=(json[0].id_asignatura);
+					var c=(json[0].id_curso);
+
+					cargar_materia_combo(c,a);   
+			});
+           		
+           		}
+		else{ 
+			
+//////no hace nada
+	}
+}
+/////////////////
+///////////////////cargar carga academica de cada profesor pasado por get_ y llenado de tabla y datos
+function cargar_datos_profesor() {
 
 if(typeof(getUrlVars()['id']) != "undefined"){ 
 	var id = getUrlVars()['id'];
@@ -174,38 +197,11 @@ if(typeof(getUrlVars()['id']) != "undefined"){
 			},function(a){
 				//alert(a);
 			var json = eval(a);
-
-						var tds=$("#tabla_carga tr:first td").length;
-						var trs=$("#tabla_carga tr").length;
-						var total=0;
-	            		var nuevaFila="<tr>";
-	            		//alert(json[0].id_carga);
-	            		//////si la carga academica es indfinida no mando a imprimir
-	            if (typeof(json[0].id_carga) != "undefined"){
-
-					for(i=0; i<json.length; i++){
-						
-						nuevaFila="<tr>";
-					 	nuevaFila+="<td><a href="+"'./editar_carga_profesor.php?id_carga="+(json[i].id_carga)+"'>"+(json[i].nom_materia)+"</a></td> <td>"+(json[i].nom_curso)+"</td> <td>"+(json[i].num_salon)+"</td> <td>"+(json[i].n_horas_week)+"</td>";
-						nuevaFila+="</tr>";
-	           		 	$("#tabla_carga").append(nuevaFila);
-	           		 	nuevaFila=" ";
-	           		 	var horas=(json[i].n_horas_week);
-	           		 	var total=parseFloat(horas)+parseFloat(total);
-
-	           		 }
-	           		 $("#carga_vacia").addClass("hidden");
-
-	           	}
-	           		//carga_vacia
-	           		$("#total").text(total);
-	           		document.form_carga_profesor.nombres.value=(json[0].nombres);
+	        
+	            	document.form_carga_profesor.nombres.value=(json[0].nombres);
 	           		document.form_carga_profesor.apellidos.value=(json[0].apellidos);
 	           		document.form_carga_profesor.area.value=(json[0].area);
-	           		document.form_carga_profesor.id_profesor.value=(json[0].id);
-
-	           		//carga_vacia
-					
+	           		document.form_carga_profesor.id_profesor.value=(json[0].id); 
 			});
            		
            		}
@@ -213,5 +209,70 @@ if(typeof(getUrlVars()['id']) != "undefined"){
 			
 //////no hace nada
 	}
+}
+/////////////////cargo los datos de la carga academica seleccionada
+cargar_carga_materia();
+///////////////si eligen un cambio de profesor cargo datos de nuevo profesor///
+cargar_datos_profesor();
+
+///////editar_carga
+function editar_cajas(){
+document.getElementById("combo_asignaturas").disabled = false
+document.getElementById("combo_cursos").disabled = false
+document.getElementById("horas_dia").disabled = false
+document.getElementById("horas_semana").disabled = false
+document.getElementById("aula").disabled = false
+}
+////evento_btn_editar_carga
+$("#btn_editar").click(function(e){
+e.preventDefault();
+	editar_cajas();
+	document.getElementById("btn_asignar").disabled = false
+		document.getElementById("btn_editar").disabled = true
+			document.getElementById("btn_eliminar").disabled = true
+				$('#combo_asignaturas').focus();
+	
 });
-/////////////////
+////
+////evento_btn_actualizar_carga
+$("#btn_asignar").click(function(e){
+e.preventDefault();
+	alert('evento_btn_actualizar_carga');
+});
+////
+////evento_btn_delete_carga
+$("#btn_eliminar").click(function(e){
+	e.preventDefault();
+	var id_carga = getUrlVars()['id_carga'];
+	var id = getUrlVars()['id'];
+		if(confirm('¿Esta seguro eliminar la carga?')){
+				$.post('./controler/editar_carga.php',{
+				caso:'eliminar',
+				id_carga:id_carga
+					},function(a){
+						alert('La carga academica ha sido asignada con exito');
+						location.href="./carga_profesor.php?id=" + $("#id_profesor").val();
+					});
+		}else{
+
+		}
+	
+
+	});
+////
+}
+$(document).on('ready',inicio);
+/////////////////////iniciar//////////////////////$.post('',{},function(a){});
+
+
+
+
+
+
+
+
+
+
+$(function() {
+//alert('');
+});
