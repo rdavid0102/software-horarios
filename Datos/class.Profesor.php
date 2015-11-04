@@ -83,12 +83,12 @@
 			$datoshorario=$_SESSION['Horario'];
 			$id_horario=$datoshorario[0]['id_horario'];
 				
-			$re=mysqli_query($con, "SELECT id, n_horas_week, nom_materia, nom_curso, num_salon, id_carga, nombres, apellidos, area FROM carga_academica, materias, curso, salones, profesores WHERE carga_academica.id_profesor=".$id." and carga_academica.id_horario="."$id_horario and carga_academica.id_asignatura=materias.id_materia and carga_academica.id_salon=salones.id_salon and carga_academica.id_curso=curso.id_curso and carga_academica.id_profesor=profesores.id");					
+			$re=mysqli_query($con, "SELECT * FROM carga_academica, materias, curso, salones, profesores WHERE carga_academica.id_profesor=".$id." and carga_academica.id_horario="."$id_horario and carga_academica.id_asignatura=materias.id_materia and carga_academica.id_salon=salones.id_salon and carga_academica.id_curso=curso.id_curso and carga_academica.id_profesor=profesores.id");					
 			
 			while ($f=mysqli_fetch_array($re)) {
 				$arreglo[]=array('id_carga'=>$f['id_carga'],
 				'nom_curso'=>$f['nom_curso'],'num_salon'=>$f['num_salon'],'n_horas_week'=>$f['n_horas_week'],'nombres'=>$f['nombres'],
-				'apellidos'=>$f['apellidos'],'nom_materia'=>$f['nom_materia'],'area'=>$f['area'],'id'=>$f['id']);
+				'apellidos'=>$f['apellidos'],'nom_materia'=>$f['nom_materia'],'area'=>$f['area'],'id'=>$f['id'],'id_salon'=>$f['id_salon']);
 			}
 			return $arreglo;
 			mysqli_close($con); 			     		   

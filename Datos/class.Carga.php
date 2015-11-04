@@ -19,7 +19,7 @@
 				$arreglo[]=array('id_carga'=>$f['id_carga'],
 				'nom_curso'=>$f['nom_curso'],'num_salon'=>$f['num_salon'],'n_horas_week'=>$f['n_horas_week'],'nombres'=>$f['nombres'],
 				'apellidos'=>$f['apellidos'],'nom_materia'=>$f['nom_materia'],'area'=>$f['area'],'id'=>$f['id'],
-				'n_horas_day'=>$f['n_horas_day'],'id_asignatura'=>$f['id_asignatura'],'id_curso'=>$f['id_curso']);
+				'n_horas_day'=>$f['n_horas_day'],'id_asignatura'=>$f['id_asignatura'],'id_curso'=>$f['id_curso'],'id_salon'=>$f['id_salon']);
 			}
 			return $arreglo;
 			mysqli_close($con); 	
@@ -29,6 +29,14 @@
 			include ('../Datos/conexion.php');
 			mysqli_query($con, "DELETE FROM carga_academica WHERE id_carga=".$id_carga);	
 			mysqli_close($con); 		     		   
+		}
+		function Actualizar_carga($id_carga, $id_profesor, $id_asignatura, $id_curso, $id_salon, $n_horas_day, $n_horas_week)
+		{	
+			include ('../Datos/conexion.php');
+			mysqli_query($con, "UPDATE carga_academica SET id_profesor='$id_profesor', id_asignatura='$id_asignatura', id_curso='$id_curso', id_salon='$id_salon', n_horas_day='$n_horas_day', n_horas_week='$n_horas_week'
+			WHERE id_carga=".$id_carga)or die(mysqli_error());
+								
+			mysqli_close($con); 	     		   
 		}
 
 		

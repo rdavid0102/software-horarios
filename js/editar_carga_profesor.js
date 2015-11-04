@@ -173,6 +173,7 @@ if(typeof(getUrlVars()['id_carga']) != "undefined"){
 					document.form_carga_profesor.aula.value=(json[0].num_salon);
 					document.form_carga_profesor.horas_dia.value=(json[0].n_horas_day);
 					document.form_carga_profesor.horas_semana.value=(json[0].n_horas_week);
+					document.form_carga_profesor.id_salon.value=(json[0].id_salon);
 					//////cargamos los combos
 					var a=(json[0].id_asignatura);
 					var c=(json[0].id_curso);
@@ -202,6 +203,7 @@ if(typeof(getUrlVars()['id']) != "undefined"){
 	           		document.form_carga_profesor.apellidos.value=(json[0].apellidos);
 	           		document.form_carga_profesor.area.value=(json[0].area);
 	           		document.form_carga_profesor.id_profesor.value=(json[0].id); 
+	           		//document.form_carga_profesor.id_salon.value=(json[0].id_salon);
 			});
            		
            		}
@@ -230,6 +232,7 @@ e.preventDefault();
 	document.getElementById("btn_asignar").disabled = false
 		document.getElementById("btn_editar").disabled = true
 			document.getElementById("btn_eliminar").disabled = true
+				document.getElementById("menu_buscarprofesor").disabled = false
 				$('#combo_asignaturas').focus();
 	
 });
@@ -237,7 +240,29 @@ e.preventDefault();
 ////evento_btn_actualizar_carga
 $("#btn_asignar").click(function(e){
 e.preventDefault();
-	alert('evento_btn_actualizar_carga');
+var id_carga = getUrlVars()['id_carga'];
+var con=verificar_datos_carga();
+
+		if(con==5){
+			$.post('./controler/editar_carga.php',{
+				caso:'editar',
+				id_carga:id_carga,
+				id_profesor:$("#id_profesor").val(),
+				id_asignatura:$("#combo_asignaturas").val(),
+				id_curso:$("#combo_cursos").val(),
+				id_salon:$("#id_salon").val(),
+				n_horas_day:$("#horas_dia").val(),
+				n_horas_week:$("#horas_semana").val()
+					},function(a){
+						alert(a);
+						//alert('La carga academica ha sido asignada con exito');
+						//location.href="./carga_profesor.php?id=" + $("#id_profesor").val();
+					});
+
+		}else{
+			alert('Debe completar todos los campos obligatorios')
+		}
+
 });
 ////
 ////evento_btn_delete_carga
@@ -245,6 +270,8 @@ $("#btn_eliminar").click(function(e){
 	e.preventDefault();
 	var id_carga = getUrlVars()['id_carga'];
 	var id = getUrlVars()['id'];
+	var con=verificar_datos_carga();
+
 		if(confirm('¿Esta seguro eliminar la carga?')){
 				$.post('./controler/editar_carga.php',{
 				caso:'eliminar',

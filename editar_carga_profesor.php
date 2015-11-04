@@ -33,7 +33,7 @@ include('./controler/menu_profesor.php')
 
 							
 							<label for="nombre" class="control-label" >Buscar</label><br>
-							<a class="btn btn-info btn-block" id="menu_buscarprofesor" data-url="editar_carga_profesor" href=""><span class="glyphicon glyphicon-search"></span></button></a>
+							<button class="btn btn-info btn-block" id="menu_buscarprofesor" data-url="editar_carga_profesor" disabled><span class="glyphicon glyphicon-search"></span></button></button>
 						</div>
 						<div class="col-md-3" id="div_nombres">
 							<label for="nombre" class="control-label ">Nombres</label>
@@ -102,6 +102,7 @@ include('./controler/menu_profesor.php')
 							<div class="text-danger" id="error">
 								<span id="error_aula"></span>
 							</div>
+							<input id="id_salon" class="hidden" disabled>
 						</div>
 
 				</div>
