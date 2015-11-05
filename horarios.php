@@ -8,6 +8,7 @@ include('./temples/validar_horario.php')
 include('./temples/head.php');
 include('./temples/header.php');
 ?>
+<script type="text/javascript" src="./js/horarios.js"></script>
 <body>
 <BR>
 	<div class="container-fluid">
@@ -18,22 +19,12 @@ include('./temples/header.php');
 				<div class="panel-body">
 					<div class="container-fluid">
 					<form class="form-horizontal" method="GET" action="./controler/iniciar_session_horario.php "role="form" name="abrir_horario" id="abrir_horario">
-						<input type="hidden" name="_token" value="zooMTKtg7aWjvT6LdB9bMBQ8iFRVjJiRZXGy2eFx">
+						
 
 					<div class="form-group">
 						<div class="col-md-12" id="div_horiarios">
 						<label for="combo_horarios" class="control-label ">Nombres</label>
 						<select class="form-control" name="nom_horario" id="nom_horario">
-								
-								<?php
-								include('./Datos/conexion.php');
-								$re=mysqli_query($con, "SELECT * FROM horarios")or die(mysqli_error());
-
-								while ($f=mysqli_fetch_array($re)) {
-									echo'<option value='.$f['nom_horario'].'>'.$f['nom_horario'].'</option>';
-								}
-								?>
-								
 								
 						</select>
 							<div class="text-danger" id="error">
@@ -49,7 +40,7 @@ include('./temples/header.php');
 					<a class="btn btn-info btn-block" href="nuevo_horario_home.php">Nuevo</a>
 				</div>
 				<div class="col-md-4">
-					<button class="btn btn-success btn-block" type="submit" name="abrir_horario" id="abrir_horario">Abrir</button>
+					<button class="btn btn-success btn-block" type="submit" id="abrir_horario">Abrir</button>
 				</div>
 				<div class="col-md-2"></div>
 			</div>

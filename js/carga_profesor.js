@@ -64,7 +64,7 @@ var horas_dia=$("#horas_dia").val();
 var combo_cursos=$("#combo_cursos").val();
 var aula=$("#aula").val();
 	var con=verificar_datos_carga();	
-	///////////////
+	///////////////funcion enviar datos
 	function enviar_datos(){
 			if(con==5){
 			$.post('./controler/asignar_carga.php',{
@@ -84,14 +84,15 @@ var aula=$("#aula").val();
 			alert('Debe completar todos los datos obligatorios');
 		}
 	}
-	//////////////
+	/////////////////fin-funcion enviar datos
 	$.post('./controler/verificar_aula.php',{
 		combo_asignaturas:combo_asignaturas,
 		aula:aula,
 		id_profesor:id_profesor
 		},function(e){
-
+			//alert(e);
 			if (e==0) {
+
 				if (confirm('El profesor '+ $('#nombres').val() +' '+ $('#apellidos').val() +' No se encuentra asociado a el curso '+aula+' o a la asignatura Seleccionada. ¿Igual desea asociarlo?')){
 				////////envio datos
 				enviar_datos();
@@ -104,7 +105,7 @@ var aula=$("#aula").val();
 			}
 			
 	});
-
+////////////////
 							
 });
 
@@ -115,8 +116,10 @@ $(document).on('ready',inicio);
 ///////////cargar_materias
 $(function() {
 				
-	$.post('./controler/cargar_materias.php',{		
+	$.post('./controler/cargar_materias.php',{
+	caso:'cargar_materias'		
 		}, function(a){
+		
 			var json = eval(a);
 			$("#combo_asignaturas").empty();
 

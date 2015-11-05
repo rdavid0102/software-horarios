@@ -111,7 +111,8 @@ var aula=$("#aula").val();
 ///////////cargar_materias en los comobo//////////automato
 function cargar_materia_combo(j,x) {
 				
-	$.post('./controler/cargar_materias.php',{		
+	$.post('./controler/cargar_materias.php',{	
+		caso:'cargar_materias'	
 		}, function(a){
 			var json = eval(a);
 			$("#combo_asignaturas").empty();
@@ -203,7 +204,15 @@ if(typeof(getUrlVars()['id']) != "undefined"){
 	           		document.form_carga_profesor.apellidos.value=(json[0].apellidos);
 	           		document.form_carga_profesor.area.value=(json[0].area);
 	           		document.form_carga_profesor.id_profesor.value=(json[0].id); 
-	           		//document.form_carga_profesor.id_salon.value=(json[0].id_salon);
+	           		document.form_carga_profesor.id_salon.value=(json[0].id_salon);
+	           		if (typeof(json[0].id_salon) != "undefined") {
+	           			document.form_carga_profesor.aula.value=(json[0].num_salon);
+	           		}else{
+	           			document.form_carga_profesor.aula.value='';
+	           		}
+
+	           		
+
 			});
            		
            		}
@@ -254,9 +263,9 @@ var con=verificar_datos_carga();
 				n_horas_day:$("#horas_dia").val(),
 				n_horas_week:$("#horas_semana").val()
 					},function(a){
-						alert(a);
-						//alert('La carga academica ha sido asignada con exito');
-						//location.href="./carga_profesor.php?id=" + $("#id_profesor").val();
+						//alert(a);
+						alert('La carga academica ha sido asignada con exito');
+						location.href="./carga_profesor.php?id=" + $("#id_profesor").val();
 					});
 
 		}else{

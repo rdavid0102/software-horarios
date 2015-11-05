@@ -47,24 +47,18 @@
 			return $arreglo;
 			mysqli_close($con); 		     		   
 		}
-		function Buscar_num_curso($num_curso)
-		{	
-			include ('../Datos/conexion.php');
-			$re=mysqli_query($con, "SELECT * FROM curso WHERE num_curso="."'$num_curso'");
-			$nre = mysqli_num_rows($re);
-			return $nre;
-							
-			mysqli_close($con); 		     		   
-		}
 
-		function Buscar_num_curso_num($id_curso)
+
+		function Cargar_materia($id_materia)
 		{	
 			include ('../Datos/conexion.php');
-			$re=mysqli_query($con, "SELECT * FROM curso WHERE id_curso="."'$id_curso'");
-			$f=mysqli_fetch_array($re);
-	        $num_curso = $f['num_curso'];
-			return $num_curso;		
-			mysqli_close($con); 		     		   
+			$re=mysqli_query($con, "SELECT * FROM materias WHERE id_materia="."'$id_materia'");
+				while ($f=mysqli_fetch_array($re)) {
+				$arreglo[]=array('id_materia'=>$f['id_materia'],
+				'nom_materia'=>$f['nom_materia']);
+			}
+			return $arreglo;
+			mysqli_close($con); 	     		   
 		}
 
 

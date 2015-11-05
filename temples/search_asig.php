@@ -53,7 +53,7 @@
 							$re=mysqli_query($con, "SELECT * FROM materias WHERE id_horario=".$id_horario." and ".@$t_busqueda." LIKE '%".@$_GET['buscar']."%'");
 							while ($f=mysqli_fetch_array($re)) {?>
 							<tr>
-								<td><a href="./editar_materia.php? id= <?php echo $f['id_materia'];?>"><span><?php echo $f['nom_materia'];?></span></a>
+								<td><a href="./editar_materia.php?id=<?php echo $f['id_materia'];?>"><span><?php echo $f['nom_materia'];?></span></a>
 								<br></td>	
 								<td><span><?php ?></span><br></td>		
 								

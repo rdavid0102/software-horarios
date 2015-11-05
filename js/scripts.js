@@ -215,78 +215,10 @@ else{
 	vaciar();
 	document.editar.cedula.focus();
 	});
-//////////nuevo_horario////////////////////
-$(".nuevo_horario").click(function(e){
-	e.preventDefault();
-	var nom_horario = $(".nom_horario").val();
-	$("#error_nom_horario").empty();
+////////////////////////////////////////
 
-	if (nom_horario=='') {
-		$("#div_nom_horario").addClass("has-error");
-		$("#error_nom_horario").text('*El nonmbre del horario no puede ser vacio');
-		$("#duplicado").addClass("hidden");
 
-	}else{
-	$.post('./controler/nuevo_horario.php',{
-				nom_horario:nom_horario
-			}, function(a){
-				if (a==0) {
-					alert('EL horario se guardo con exito');
-					location.href="./controler/iniciar_session_horario.php?nom_horario="+nom_horario;
-					}
-			else{
-				$("#div_nom_horario").removeClass("has-error");
-				$("#duplicado").removeClass("hidden");
-				
-				}
-			});
-	}
-	
-});	
-
-//////////////////////////////////////////editar_nom_horario
-$("#editar_nom_horario").click(function(e){
-e.preventDefault();
-var nom_horario=$("#nom_horario").val();
-var nom_new=$("#nombre").val();
-
-	$.post('./controler/Editar_horario.php',{
-		nom_horario:nom_horario,
-		nom_new:nom_new
-	}, function(a){
-		if(a==0){
-		alert('El nombre ha sido actualizado con exito')
-		location.href="./editar_horario.php";
-	}
-		else
-		{
-			alert('WARNING! El nombre de horario ya exite.')
-			document.form_nom_horario.nombre.focus();
-			$("#duplicado_nombre").removeClass("hidden");
-		}
-
-	});
-});
-//////////////////////////////////////////editar_nom_horario
-$("#eliminar_horario").click(function(e){
-e.preventDefault();
-var nom_horario=$("#nom_horario").val();
-if (confirm('¿Esta seguro Que desea elimimar el horario '+nom_horario+'? WARNING! Recuerde que todos los datos asociados a este horario serian eliminados de la base de datos.')){
-	$.post('./controler/eliminar_horario.php',{
-		nom_horario:nom_horario
-		}, function(a){
-			alert('El horario ha sido eliminado con exito')
-			location.href="./editar_horario.php";
-		});
-	}
-});
-
-////////////////
-$(".menu").click(function(e){
-   var nom_horario=$("#nom_horario").val();
-   document.form_nom_horario.nombre.value = nom_horario;
- });
-////////////////
+//////////
 function verficar_curso()
 {
 	var con=0;
@@ -459,8 +391,8 @@ $("#editar_materia").click(function(e){
 $("#actualizar_materia").click(function(e){
 	e.preventDefault();
 	var con = verificar_materia();
-	var nom_materia = $(".nom_materia").val();
-	var id_materia=$(this).attr('data-id');
+	var nom_materia = $("#nom_materia").val();
+	var id_materia=$("#id_materia").val();
 
 	if(con==1){
 		$.post('./controler/actualizar_materia.php',{
@@ -484,8 +416,8 @@ $("#actualizar_materia").click(function(e){
 //////////////////eliminar_ASIGNATURA
 $("#eliminar_materia").click(function(e){
 e.preventDefault();
-var nom_materia = $(".nom_materia").val();
-var id_materia=$(this).attr('data-id');
+var nom_materia = $("#nom_materia").val();
+var id_materia= $("#id_materia").val();
 	if (confirm('¿Esta seguro de Eliminar la asignatura '+nom_materia+'? WARNING: Toda la informacion asociada a esta asignatura seria eliminada de la base de datos.')){
 	$.post('./controler/Eliminar_materia.php',{
 		id_materia:id_materia

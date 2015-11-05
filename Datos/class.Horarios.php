@@ -74,6 +74,35 @@
 			
 
 		}
+		public function Cargar_horarios()
+		{	 	
+				include ('../Datos/conexion.php');	
+	         	$re=mysqli_query($con, "SELECT * FROM horarios")or die(mysqli_error());
+	         	$this->resultado = mysqli_num_rows($re);
+	         		if ($this->resultado!=0){
+
+						while ($f=mysqli_fetch_array($re)) {
+							$vector[]=array('id_horario'=>$f['id_horario'],'nom_horario'=>$f['nom_horario']);
+						}
+						return $vector;
+					}
+	        
+                mysqli_close($con);
+		}
+		public function Iniciar_horario()
+		{	 	
+				session_start();
+				include ('../Datos/conexion.php');		
+				$re=mysqli_query($con, "SELECT * FROM horarios WHERE id_horario ='".$this->id."'")or die(mysqli_error());
+				while ($f=mysqli_fetch_array($re)) {
+					$arreglo[]=array('id_horario'=>$f['id_horario'],
+							'nom_horario'=>$f['nom_horario']);
+						$_SESSION['Horario']=$arreglo;
+				}
+		}
+
+
+
 
 	}
 

@@ -62,6 +62,7 @@
 					<li class="#"><a href="./buscar_curso_home.php">Curso</a></li>
 					<li class="#"><a href="./buscar_materia.php">Materia</a></li>
 					<li class="#"><a href="./editar_horario.php">Horario</a></li>
+					<li class="#"><a href="./salones.php">salones</a></li>
 				
 				</ul>
 			</li>

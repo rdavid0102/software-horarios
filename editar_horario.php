@@ -7,6 +7,7 @@ include('./temples/validar_session.php');
 include('./temples/head.php');
 include('./temples/header.php');
 ?>
+<script type="text/javascript" src="./js/horarios.js"></script>
 <body>
 <BR>
 	<div class="container-fluid">
@@ -22,14 +23,7 @@ include('./temples/header.php');
 								<div class="col-md-12" id="div_horiarios">
 								<label for="combo_horarios" class="control-label ">Nombres</label>
 									<select class="form-control" name="nom_horario" id="nom_horario">
-											<?php
-											include('./Datos/conexion.php');
-											$re=mysqli_query($con, "SELECT * FROM horarios")or die(mysqli_error());
-
-											while ($f=mysqli_fetch_array($re)) {
-												echo'<option value='.$f['nom_horario'].'>'.$f['nom_horario'].'</option>';
-											}
-											?>
+											
 									</select>
 										<div class="text-danger" id="error">
 											<span id="error_combo_horario"></span>

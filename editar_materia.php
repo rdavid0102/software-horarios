@@ -7,6 +7,7 @@ include('./temples/validar_session.php');
 include('./temples/head.php');
 include('./temples/header.php');
 ?>
+<script type="text/javascript" src="./js/materias.js"></script>
 <body>
 <BR>
 	<div class="container-fluid">
@@ -18,18 +19,15 @@ include('./temples/header.php');
 					<div class="container-fluid">
 					<form class="form-horizontal" name="form_editar_materia" id="form_editar_materia">
 						
-						<?php
-							include 'Datos/conexion.php';
-							$re=mysqli_query($con, "select * from materias where id_materia=".$_GET['id'])or die(mysqli_error());
-							while ($f=mysqli_fetch_array($re)) {
-							?>
+				
 					<div class="form-group">
 						<div class="col-md-12" id="div_nom_curso">
 							<label for="nom_horario" class="control-label ">Nombre</label>
-							<input class="form-control nom_materia" type="text" name="nom_materia" id="nom_materia" value="<?php echo $f['nom_materia'];?>"disabled>
+							<input class="form-control nom_materia" type="text" name="nom_materia" id="nom_materia" value="" disabled>
 							<div class="text-danger" id="error">
 								<span id="error_nom_materia"></span>
 							</div>
+							<input type="hidden" id="id_materia" disabled>
 						</div>
 						
 					</div>
@@ -42,15 +40,14 @@ include('./temples/header.php');
 								<button class="editar_materia btn btn-info btn-block" id="editar_materia" name="editar_materia">Editar</button>
 							</div>
 							<div class="col-md-4">
-								<button class="actualizar_materia btn btn-success btn-block" id="actualizar_materia" data-id="<?php echo $f['id_materia'];?>" disabled>Actualizar</button>
+								<button class="actualizar_materia btn btn-success btn-block" id="actualizar_materia" data-id="" disabled>Actualizar</button>
 							</div>
 							<div class="col-md-4">
-								<button class="eliminar_materia btn btn-danger btn-block" id="eliminar_materia" data-id="<?php echo $f['id_materia'];?>">Eliminar</button>
+								<button class="eliminar_materia btn btn-danger btn-block" id="eliminar_materia" data-id="">Eliminar</button>
 							</div>
 						
 								</form>
-							<?php }
-							?>
+						
 						</div>
 				</div>
 			</div>

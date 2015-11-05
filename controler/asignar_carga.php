@@ -10,7 +10,7 @@
 
 	if ($nr==0) {
 		$clase=new  Salones();
-		$clase->Nuevo_salon($_POST['aula'],$_POST['id_profesor'],$_POST['combo_asignaturas']);
+		$clase->Nuevo_salon($_POST['aula'],$_POST['id_profesor'],$_POST['combo_asignaturas'],$id_horario);
 		///
 		$clase=new  Salones();
 		$num_salon = $clase->obtener_id($_POST['aula']);

@@ -5,5 +5,8 @@
 	$id_horario=$datoshorario[0]['id_horario'];
 	////
 	$clase=new  Salones();
-	$nr = $clase->Verificar_aula_profesor($id_horario,$_POST['aula'],$_POST['id_profesor'],$_POST['combo_asignaturas']);	
+	$ng=$clase->Verificar_aula_profesor($id_horario,$_POST['aula'],$_POST['id_profesor'],$_POST['combo_asignaturas']);
+	//echo $id_horario.' '.$_POST['aula'].' '.$_POST['id_profesor'].' '.$_POST['combo_asignaturas'];
+	echo $ng;
+
 ?>
