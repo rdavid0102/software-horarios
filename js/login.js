@@ -264,7 +264,7 @@ function buscar_profesor(url,id_carga)
 						var tds=$("#tabla_profesores tr:first td").length;
 						var trs=$("#tabla_profesores tr").length;
 						$('#tabla_profesores tr:not(:first)').remove();
-						
+						//////si la carga academica es indfinida no mando a imprimir
 		            	var nuevaFila="<tr>";
 						for(i=0; i<json.length; i++){
 							nuevaFila="<tr>";
@@ -310,11 +310,13 @@ $("#menu_buscarprofesor").click(function(e){
 ////////
 ///////////////////buscar_profesor_modal
 $(".buscar_profesor_modal").click(function(e){
-buscar_profesor();
+	var id_carga = getUrlVars()['id_carga'];
+	buscar_profesor('carga_profesor',id_carga);
 });
 $("#text_buscar_profesor").keyup(function(e){
 	if(e.keyCode==13){
-		buscar_profesor();
+		var id_carga = getUrlVars()['id_carga'];
+		buscar_profesor('carga_profesor',id_carga);
 	}
 });
 

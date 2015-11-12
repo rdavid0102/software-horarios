@@ -56,63 +56,13 @@ $("#error_combo_asignatura").text('*Selecciona una asignatura');
 										return con
 }
 
-$("#editar_carga").click(function(e){
-var combo_asignaturas=$("#combo_asignaturas").val();
-var id_profesor=$("#id_profesor").val();
-var horas_semana=$("#horas_semana").val();
-var horas_dia=$("#horas_dia").val();
-var combo_cursos=$("#combo_cursos").val();
-var aula=$("#aula").val();
-	var con=verificar_datos_carga();	
-	///////////////
-	function enviar_datos(){
-			if(con==5){
-			$.post('./controler/asignar_carga.php',{
-				id_profesor:id_profesor,
-				combo_asignaturas:combo_asignaturas,
-				combo_cursos:combo_cursos,
-				aula:aula,
-				horas_dia:horas_dia,
-				horas_semana:horas_semana
 
-				},function(a){
-					alert('La carga academica ha sido asignada con exito');
-					location.href="carga_profesor.php?id="+id_profesor;
-
-				});
-		}else{
-			alert('Debe completar todos los datos obligatorios');
-		}
-	}
-	//////////////
-	$.post('./controler/verificar_aula.php',{
-		combo_asignaturas:combo_asignaturas,
-		aula:aula,
-		id_profesor:id_profesor
-		},function(e){
-
-			if (e==0) {
-				if (confirm('El profesor '+ $('#nombres').val() +' '+ $('#apellidos').val() +' No se encuentra asociado a el curso '+aula+' o a la asignatura Seleccionada. ¿Igual desea asociarlo?')){
-				////////envio datos
-				enviar_datos();
-				}else{
-					////////no envio datos
-				}
-			}else{
-				//////enviar datos
-				enviar_datos();
-			}
-			
-	});
-
-							
-});
-
-///////////cargar_materias en los comobo//////////automato
+///////////cargar_materias y cursos en los comobo//////////y elegir los asignados automato
 function cargar_materia_combo(j,x) {
 				
-	$.post('./controler/cargar_materias.php',{	
-		caso:'cargar_materias'	
+	$.post('./controler/con_materia.php',{	
+		caso:'cargar_tabla',
+		buscar:''	
 		}, function(a){
 			var json = eval(a);
 			$("#combo_asignaturas").empty();
@@ -156,6 +106,7 @@ function getUrlVars()
     return vars;
 }
 ////////////////////
+
 ///////////////////cargar carga academica de cada profesor pasado por get_ y llenado de tabla y datos
 function cargar_carga_materia() {
 
@@ -253,7 +204,7 @@ var id_carga = getUrlVars()['id_carga'];
 var con=verificar_datos_carga();
 
 		if(con==5){
-			$.post('./controler/editar_carga.php',{
+			$.post('./controler/con_carga_profesor.php',{
 				caso:'editar',
 				id_carga:id_carga,
 				id_profesor:$("#id_profesor").val(),
@@ -282,7 +233,7 @@ $("#btn_eliminar").click(function(e){
 	var con=verificar_datos_carga();
 
 		if(confirm('¿Esta seguro eliminar la carga?')){
-				$.post('./controler/editar_carga.php',{
+				$.post('./controler/con_carga_profesor.php',{
 				caso:'eliminar',
 				id_carga:id_carga
 					},function(a){
@@ -299,16 +250,3 @@ $("#btn_eliminar").click(function(e){
 }
 $(document).on('ready',inicio);
 /////////////////////iniciar//////////////////////$.post('',{},function(a){});
-
-
-
-
-
-
-
-
-
-
-$(function() {
-//alert('');
-});

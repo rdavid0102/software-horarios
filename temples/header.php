@@ -66,7 +66,26 @@
 				
 				</ul>
 			</li>
-			<li class="#"><a data-toggle="modal" data-target="#myModal">Salir</a></li>
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+					Carga Profesor <span class="caret"></span>
+				</a>
+				<ul class="dropdown-menu" role="menu">
+					<li class="#"><a href="carga_profesor.php">Nueva Carga Profesor</a></li>
+					<li class="#"><a href="carga_profesor.php">Editar Carga profesor</a></li>
+					<li class="#"><a href="listado_carga_profesor.php">Lista Carga profesor</a></li>
+				</ul>
+			</li>
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+					Salones <span class="caret"></span>
+				</a>
+				<ul class="dropdown-menu" role="menu">
+					<li class="#"><a href="nuevo_salon.php">Nuevo Salon</a></li>
+					<li class="#"><a href="salones.php">Editar salon</a></li>
+				</ul>
+			</li>
+			<li class="#"><a href= "#" data-toggle="modal" data-target="#myModal">Salir</a></li>
 		</ul><?php } ?>
 
 			<form action="" class="navbar-form navbar-right" role="search">
@@ -86,7 +105,7 @@
 										<li role="presentation"> <a role="item" href="usuario.php">Mi cuenta</a></li>
 										<li role="presentation" class="divider"></li>
 									
-										<li role="presentation"> <a role="item" data-toggle="modal" data-target="#myModal">Salir</a></li>
+										<li role="presentation"> <a href="#" role="item" data-toggle="modal" data-target="#myModal">Salir</a></li>
 									</ul>
 									<?php
 								}

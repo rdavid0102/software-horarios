@@ -48,11 +48,13 @@
 			if($nre!=0){
 					while ($f=mysqli_fetch_array($re)) {
 					$arreglo[]=array('id'=>$f['id'],
-					'nombres'=>$f['nombres'],'apellidos'=>$f['apellidos'], 'area'=>$f['area']);
+					'nombres'=>$f['nombres'],'apellidos'=>$f['apellidos'], 'area'=>$f['area'],'sexo'=>$f['sexo'],
+					'telefono'=>$f['telefono'],'celular'=>$f['celular'],'email'=>$f['email']);
 				}
 				return $arreglo;
 			}
 			return 'undefined';
+			
 			mysqli_close($con); 			     		   
 		}
 		function Cargar_profesores_id($id)
@@ -96,7 +98,7 @@
 
 
 
-
+//$re=mysqli_query($con, "SELECT * FROM profesores WHERE apellidos LIKE '%".@$_GET['valor']."%'");
 	
 	}
 

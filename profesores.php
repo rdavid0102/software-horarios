@@ -7,6 +7,7 @@ include('./temples/validar_session.php');
 include('./temples/head.php');
 include('./temples/header.php');
 ?>
+<script type="text/javascript" src="./js/profesor.js"></script>
 <body>
 <BR>
 	<div class="container-fluid">
@@ -16,7 +17,7 @@ include('./temples/header.php');
 				<div class="panel-heading"><h4 class="text-center">NUEVO PROFESOR</h4></div>
 				<div class="panel-body">
 					<div class="container-fluid">
-					<form class="form-horizontal" method="POST" action="./controler/nuevo_profesor.php" role="form" name="editar" id="editar" enctype="multipart/form-data">
+					<form class="form-horizontal" method="POST" action="./controler/nuevo_profesor.php" role="form" name="form_nuevo_profesor" id="form_nuevo_profesor" enctype="multipart/form-data">
 						<input type="hidden" name="_token" value="zooMTKtg7aWjvT6LdB9bMBQ8iFRVjJiRZXGy2eFx">
 
 					<div class="form-group">

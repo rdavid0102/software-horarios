@@ -7,6 +7,7 @@ include('./temples/validar_session.php');
 include('./temples/head.php');
 include('./temples/header.php');
 ?>
+<script type="text/javascript" src="./js/cursos.js"></script>
 <body>
 <BR>
 	<div class="container-fluid">

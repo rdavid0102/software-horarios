@@ -14,37 +14,45 @@ function getUrlVars()
     return vars;
 }
 ////////////////////
-function cargar_tabla_cursos(){
-	$.post('./controler/con_salones.php',{
-				caso:'cargar'
-			},function(a){
-				//alert(a);
-			var json = eval(a);
+//////////////////cargar tabla salones
+function cargar_tabla_salones(){
+	if ($("#tabla_salones").length){
+		$.post('./controler/con_salones.php',{
+						caso:'cargar'
+					},function(a){
+						//alert(a);
+					var json = eval(a);
 
-						var tds=$("#tabla_salones tr:first td").length;
-						var trs=$("#tabla_salones tr").length;
-						var total=0;
-	            		var nuevaFila="<tr>";
+								var tds=$("#tabla_salones tr:first td").length;
+								var trs=$("#tabla_salones tr").length;
+								var total=0;
+			            		var nuevaFila="<tr>";
+			
+			            		//////si la carga academica es indfinida no mando a imprimir
+			            if (typeof(json) != "undefined"){
+
+							for(i=0; i<json.length; i++){
+								
+								nuevaFila="<tr>";
+							 	nuevaFila+="<td><a href="+"'./editar_salones.php?id_salon="+(json[i].id_salon)+"'>"+(json[i].num_salon)+"</a></td> <td>"+(json[i].nombres)+" "+(json[i].apellidos)+"</td> <td>"+(json[i].nom_materia)+"</td>";
+								nuevaFila+="</tr>";
+			           		 	$("#tabla_salones").append(nuevaFila);
+			           		 	nuevaFila=" ";
+			           		 }
+			           	//	 $("#carga_vacia").addClass("hidden");
+
+			           	}
+			           		//carga_vacia
+					});
+	}else{
+		//alert("no hay una tabla");
+	}
+
 	
-	            		//////si la carga academica es indfinida no mando a imprimir
-	            if (typeof(json) != "undefined"){
-
-					for(i=0; i<json.length; i++){
-						
-						nuevaFila="<tr>";
-					 	nuevaFila+="<td><a href="+"'./editar_salones.php?id_salon="+(json[i].id_salon)+"'>"+(json[i].num_salon)+"</a></td> <td>"+(json[i].nombres)+" "+(json[i].apellidos)+"</td> <td>"+(json[i].nom_materia)+"</td>";
-						nuevaFila+="</tr>";
-	           		 	$("#tabla_salones").append(nuevaFila);
-	           		 	nuevaFila=" ";
-	           		 }
-	           	//	 $("#carga_vacia").addClass("hidden");
-
-	           	}
-	           		//carga_vacia
-			});
 }
 
-cargar_tabla_cursos();
+
+cargar_tabla_salones();
 ////funcion cargar detalles salon
 function cargar_detalles_salon(){
 	if(typeof(getUrlVars()['id_salon']) != "undefined"){ 

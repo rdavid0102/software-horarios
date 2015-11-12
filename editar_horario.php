@@ -43,7 +43,7 @@ include('./temples/header.php');
 						</div>
 					
 							</form>
-						<?php include('./controler/menu_editar.php');?>
+						<?php include('./temples/menu_editar.php');?>
 					</div>
 				</div>
 			</div>

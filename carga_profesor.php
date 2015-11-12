@@ -7,7 +7,7 @@ include('./temples/validar_session.php');
 include('./temples/head.php');
 include('./temples/header.php');
 
-include('./controler/menu_profesor.php')
+include('./temples/menu_profesor.php')
 ?>
 <script type="text/javascript" src="./js/carga_profesor.js"></script>
 <body>
@@ -134,7 +134,7 @@ include('./controler/menu_profesor.php')
 							</table>
 							<div class="alert alert-warning alert-dismissible" role="alert" id="carga_vacia">
 							Lo sentimos! <strong>Ninguna carga academica asignada <span class="glyphicon glyphicon-alert"></span></strong> 
-							</div>'
+							</div>
 							
 					</div>
 					

@@ -39,7 +39,23 @@
 			mysqli_close($con); 	     		   
 		}
 
-		
+		function cargar_lista($id_horario){
+			include ('../Datos/conexion.php');
+			$re=mysqli_query($con, "SELECT id_profesor, nombres, apellidos, sum(n_horas_week) 
+			FROM carga_academica, profesores where profesores.id=carga_academica.id_profesor and carga_academica.id_horario=".$id_horario." 
+			GROUP BY id_profesor order by sum(n_horas_week)")or die(mysqli_error());
+			$nre = mysqli_num_rows($re);
+
+			if ($nre!=0) {
+				while ($f=mysqli_fetch_array($re)) {
+					$arreglo[]=array('id_profesor'=>$f['id_profesor'],'nombres'=>$f['nombres'],'apellidos'=>$f['apellidos'],'sum'=>$f['sum(n_horas_week)']);
+				}
+					return $arreglo;
+			}
+			
+			mysqli_close($con);
+		}
+
 	}
 
 ?>

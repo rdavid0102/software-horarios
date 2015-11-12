@@ -57,13 +57,37 @@
 			return $num_curso;		
 			mysqli_close($con); 		     		   
 		}
+		function Buscar_curso($id_curso)
+		{	
+			include ('../Datos/conexion.php');
+			$re=mysqli_query($con, "SELECT * FROM curso WHERE id_curso="."'$id_curso'");
+
+			while ($f=mysqli_fetch_array($re)) {
+				$arreglo[]=array('id_curso'=>$f['id_curso'],
+				'nom_curso'=>$f['nom_curso'],'num_curso'=>$f['num_curso']);
+			}
+			return $arreglo;		
+			mysqli_close($con); 		     		   
+		}
 		function Cargar_cursos($id_horario)
 		{	
 			include ('../Datos/conexion.php');
 			$re=mysqli_query($con, "SELECT * FROM curso WHERE id_horario="."'$id_horario'");
 				while ($f=mysqli_fetch_array($re)) {
 				$arreglo[]=array('id_curso'=>$f['id_curso'],
-				'nom_curso'=>$f['nom_curso']);
+				'nom_curso'=>$f['nom_curso'],'num_curso'=>$f['num_curso']);
+			}
+			return $arreglo;
+			mysqli_close($con); 		     		   
+		}
+
+		function cargar_tabla($buscar,$id_horario)
+		{	
+			include ('../Datos/conexion.php');
+			$re=mysqli_query($con, "SELECT * FROM curso WHERE id_horario=".$id_horario." and nom_curso LIKE '%".@$buscar."%'"."ORDER BY nom_curso asc");
+				while ($f=mysqli_fetch_array($re)) {
+				$arreglo[]=array('id_curso'=>$f['id_curso'],
+				'nom_curso'=>$f['nom_curso'],'num_curso'=>$f['num_curso']);
 			}
 			return $arreglo;
 			mysqli_close($con); 		     		   

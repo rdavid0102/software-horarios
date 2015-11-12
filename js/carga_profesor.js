@@ -64,16 +64,18 @@ var horas_dia=$("#horas_dia").val();
 var combo_cursos=$("#combo_cursos").val();
 var aula=$("#aula").val();
 	var con=verificar_datos_carga();	
-	///////////////funcion enviar datos
+
+	///////////////funcion enviar datos, asignar carga
 	function enviar_datos(){
 			if(con==5){
-			$.post('./controler/asignar_carga.php',{
+			$.post('./controler/con_carga_profesor.php',{
 				id_profesor:id_profesor,
 				combo_asignaturas:combo_asignaturas,
 				combo_cursos:combo_cursos,
 				aula:aula,
 				horas_dia:horas_dia,
-				horas_semana:horas_semana
+				horas_semana:horas_semana,
+				caso:'asignar_carga'
 
 				},function(a){
 					alert('La carga academica ha sido asignada con exito')
@@ -116,8 +118,9 @@ $(document).on('ready',inicio);
 ///////////cargar_materias
 $(function() {
 				
-	$.post('./controler/cargar_materias.php',{
-	caso:'cargar_materias'		
+	$.post('./controler/con_materia.php',{
+	buscar:'',
+	caso:'cargar_tabla'		
 		}, function(a){
 		
 			var json = eval(a);
@@ -172,8 +175,9 @@ $(function() {
 
 if(typeof(getUrlVars()['id']) != "undefined"){ 
 	var id = getUrlVars()['id'];
-			$.post('./controler/Cargar_carga_profesor.php',{
-				id:id
+			$.post('./controler/con_carga_profesor.php',{
+				id:id,
+				caso:'cargar_carga_profesor'
 			},function(a){
 				//alert(a);
 			var json = eval(a);
@@ -216,5 +220,50 @@ if(typeof(getUrlVars()['id']) != "undefined"){
 			
 //////no hace nada
 	}
+
+
+	/////////////////cargar todas las cargas acedemicas
+
+
+
+	////////////////////cargar la carga academica de todos los profesores
+function cargar_tabla_cargas_academicas(){
+	$.post('./controler/con_carga_profesor.php',{
+				caso:'cargar_lista'
+			},function(a){
+				//alert(a);
+			var json = eval(a);
+
+						var tds=$("#lista_tabla_carga tr:first td").length;
+						var trs=$("#lista_tabla_carga tr").length;
+						var total=0;
+	            		var nuevaFila="<tr>";
+	
+	            		//////si la carga academica es indfinida no mando a imprimir
+	            if (typeof(json) != "undefined"){
+
+					for(i=0; i<json.length; i++){
+						
+						nuevaFila="<tr>";
+					 	nuevaFila+="<td><a href="+"'./carga_profesor.php?id="+(json[i].id_profesor)+"'>"+(json[i].id_profesor)+"</a></td> <td>"+(json[i].nombres)+" "+(json[i].apellidos)+"</td> <td>"+(json[i].sum)+"</td>";
+						nuevaFila+="</tr>";
+	           		 	$("#lista_tabla_carga").append(nuevaFila);
+	           		 	nuevaFila=" ";
+	           		 	var horas=(json[i].sum);
+	           		 	var total=parseFloat(horas)+parseFloat(total);
+	           		 }
+	           		 $("#carga_vacia").addClass("hidden");
+
+
+	           	}
+	           		$("#total_cargas").text(total);
+	           		//carga_vacia
+
+			});
+}
+
+cargar_tabla_cargas_academicas();
+
+//////
 });
 /////////////////

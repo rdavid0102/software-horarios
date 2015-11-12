@@ -36,10 +36,10 @@
 			return $nre;
 			mysqli_close($con); 		     		   
 		}
-		function Cargar_materias($id_horario)
+		function Cargar_materias($buscar,$id_horario)
 		{	
 			include ('../Datos/conexion.php');
-			$re=mysqli_query($con, "SELECT * FROM materias WHERE id_horario="."'$id_horario'");
+			$re=mysqli_query($con, "SELECT * FROM materias WHERE id_horario=".$id_horario." and nom_materia LIKE '%".@$buscar."%'"."ORDER BY nom_materia asc");
 				while ($f=mysqli_fetch_array($re)) {
 				$arreglo[]=array('id_materia'=>$f['id_materia'],
 				'nom_materia'=>$f['nom_materia']);
