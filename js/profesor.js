@@ -273,8 +273,57 @@ $("#text_buscar").keyup(function(e){
 	cargar_tabla_profesores($("#text_buscar").val());
 	}
 });
+//////
+////////////////funcion para capturar el valor pasado por get
+function getUrlVars()
+{
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++)
+    {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
+}
+////////////////////
+///////cargar_datos detalles profesor
+if(typeof(getUrlVars()['id']) != "undefined"){ 
+	$.post('./controler/con_profesor.php',{
+		id:getUrlVars()['id'],
+		caso:'buscar'
+		},function(a){
+			//alert(a);
+			var json = eval(a);
+		document.getElementById("cedula").value=(json[0].id);
+			document.getElementById("nombres").value=(json[0].nombres);
+				document.getElementById("apellidos").value=(json[0].apellidos);
+					document.getElementById("telefono").value=(json[0].telefono);
+						document.getElementById("celular").value=(json[0].celular);
+							document.getElementById("email").value=(json[0].email);
+								document.getElementById("area").value=(json[0].area);
+		////verifico si el usuario tiene una imagen guardada sino cargo una imagen por defecto dependiendo su sexo
+		if ((json[0].imagen) != '') {
+		$('#imagen').prepend('<img class="img img-responsive img-rounded" id="theImg" src="./imagenes/'+(json[0].imagen)+'" title=""/>');
+			}else{
+				if (json[0].sexo=='Masculino') {
+					$('#imagen').prepend('<img class="img img-responsive img-rounded" id="theImg" src="./img/user_m.jpg" title=""/>');
+				}
+					if (json[0].sexo=='Femenino') {
+					$('#imagen').prepend('<img class="img img-responsive img-rounded" id="theImg" src="./img/user_f.jpg" title=""/>');
+				}
+		}						
 
-////
+		//////selecciono el sexo en el combo box////
+		$('#genero > option[value="'+(json[0].sexo)+'"]').attr('selected', 'selected');
+		$('#btn_modificar_profesor').prepend('<a class="btn btn-info btn-block" href="./editar_profesor.php? id='+(json[0].id)+'" title="Editar Profesor"role="button>">Modificar</a>');
+		
+
+	});
+}
+
+////////////
 }
 //$.post('',{},function(a){});
 $(document).on('ready',inicio);

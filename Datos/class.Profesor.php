@@ -54,7 +54,7 @@
 				return $arreglo;
 			}
 			return 'undefined';
-			
+
 			mysqli_close($con); 			     		   
 		}
 		function Cargar_profesores_id($id)
@@ -64,7 +64,8 @@
 			$nre = mysqli_num_rows($re);
 			while ($f=mysqli_fetch_array($re)) {
 				$arreglo[]=array('id'=>$f['id'],
-				'nombres'=>$f['nombres'],'apellidos'=>$f['apellidos'], 'area'=>$f['area']);
+					'nombres'=>$f['nombres'],'apellidos'=>$f['apellidos'], 'area'=>$f['area'],'sexo'=>$f['sexo'],
+					'telefono'=>$f['telefono'],'celular'=>$f['celular'],'email'=>$f['email'],'imagen'=>$f['imagen']);
 			}
 			return $arreglo;
 			mysqli_close($con); 			     		   
