@@ -6,6 +6,16 @@ if($_POST['caso']=='cargar'){
 	$vector = $clase->Cargar_horarios();
 		echo json_encode($vector);
 }
+if ($_POST['caso']=='nuevo') {
+	$clase=new  Horarios($_POST["nom_horario"],0);
+	$nreg = $clase->Consultar_nom_horario();
+
+		if ($nreg==0) {
+		$clase=new  Horarios($_POST["nom_horario"],0);
+		$clase->Nuevo_horario();
+	}
+	echo $nreg;
+}
 	if($_POST['caso']=='modificar'){
 		/////verifcar si el nombre existe
 		$clase=new  Horarios($_POST['nom_new'],0);

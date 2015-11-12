@@ -154,8 +154,8 @@ $("#eliminar").click(function(e){
 	var nombres = $("#nombres").val();
 	var apellidos = $("#apellidos").val();
 		if (confirm('¿Desea eliminar el profesor '+nombres+' '+apellidos+'?')){
-		$.post('./controler/Editar_profesor.php',{
-					Caso:'Eliminar',
+		$.post('./controler/con_profesor.php',{
+					caso:'Eliminar',
 					cedula:cedula
 					
 				}, function(a){
@@ -182,8 +182,8 @@ $("#actualizar").click(function(e){
 		var email = $("#email").val();
 if (con==7) {
 	if (confirm('¿Desea Actualizar los Datos del profesor '+nombres+' '+apellidos+'?')){
-	$.post('./controler/Editar_profesor.php',{
-				Caso:'Modificar',
+	$.post('./controler/con_profesor.php',{
+				caso:'Modificar',
 				cedula:cedula,
 				nombres:nombres,
 				apellidos:apellidos,
@@ -218,7 +218,7 @@ else{
 	});
 ////////////////////////////////////////
 
-////cargar tabla materias
+////cargar tabla profesor
 
 function cargar_tabla_profesores(text_buscar){
 	$.post('./controler/con_profesor.php',{
@@ -317,13 +317,13 @@ if(typeof(getUrlVars()['id']) != "undefined"){
 
 		//////selecciono el sexo en el combo box////
 		$('#genero > option[value="'+(json[0].sexo)+'"]').attr('selected', 'selected');
-		$('#btn_modificar_profesor').prepend('<a class="btn btn-info btn-block" href="./editar_profesor.php? id='+(json[0].id)+'" title="Editar Profesor"role="button>">Modificar</a>');
+		$('#btn_modificar_profesor').prepend('<a class="btn btn-info btn-block" href="./editar_profesor.php?id='+(json[0].id)+'" title="Editar Profesor"role="button>">Modificar</a>');
 		
 
 	});
 }
 
-////////////
+///////////////
 }
 //$.post('',{},function(a){});
 $(document).on('ready',inicio);

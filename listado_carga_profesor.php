@@ -7,7 +7,7 @@ include('./temples/validar_session.php');
 include('./temples/head.php');
 include('./temples/header.php');
 
-include('./controler/menu_profesor.php')
+//include('./temples/menu_profesor.php')
 ?>
 <script type="text/javascript" src="./js/carga_profesor.js"></script>
 <body>

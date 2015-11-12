@@ -75,8 +75,9 @@ function cargar_materia_combo(j,x) {
 				$('#combo_asignaturas > option[value="'+x+'"]').attr('selected', 'selected');
 		});
 
-		$.post('./controler/cargar_cursos.php',{
-				
+		$.post('./controler/con_curso.php',{
+			caso:'cargar_tabla',
+			buscar:''
 		}, function(e){
 			var json = eval(e);
 			$("#combo_cursos").empty();

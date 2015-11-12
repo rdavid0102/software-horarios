@@ -7,6 +7,7 @@ include('./temples/validar_session.php');
 include('./temples/head.php');
 include('./temples/header.php');
 ?>
+<script type="text/javascript" src="./js/profesor.js"></script>
 <body>
 <BR>
 	<div class="container-fluid">
@@ -16,17 +17,12 @@ include('./temples/header.php');
 				<div class="panel-heading"><h4 class="text-center">EDITAR PROFESOR</h4></div>
 				<div class="panel-body">
 					<div class="container-fluid">
-					<form class="form-horizontal" method="POST" action="./controler/Editar_profesor.php" name="editar" id="editar">
+					<form class="form-horizontal" method="POST" action="./controler/Editar_profesor.php" name="form_detalles_profesor" id="form_detalles_profesor">
 						
-						<?php
-							include 'Datos/conexion.php';
-							$re=mysqli_query($con, "select * from profesores where id=".$_GET['id'])or die(mysqli_error());
-							while ($f=mysqli_fetch_array($re)) {
-							?>
 					<div class="form-group">
 						<div class="col-md-8">
 							<label for="cedula" class="control-label ">Cedula</label>
-							<input class="form-control" type="text" name="cedula" id="cedula" value="<?php echo $f['id'];?>" disabled>
+							<input class="form-control" type="text" name="cedula" id="cedula" value="" disabled>
 							<div class="text-danger" id="error">
 								<span id="error_cedula"></span>
 							</div>
@@ -35,18 +31,8 @@ include('./temples/header.php');
 						<div class="col-md-4" id="div_genero">
 						<label for="genero" class="control-label ">Genero</label>
 						<select class="form-control" name="genero" id="genero" disabled>
-								<?php
-								if ($f['sexo']=="Masculino") {
-								?> <option><?php echo $f['sexo'];?></option>';
-									<option>Femenino</option><?php
-								}
-
-								else{
-									echo '<option>Femenino</option>
-										<option>Masculino</option>';
-								}
-								?>
-								
+							<option value="Masculino">Masculino</option>
+							<option value="Femenino">Femenino</option>		
 						</select>
 							<div class="text-danger" id="error">
 								<span id="error_genero"></span>
@@ -57,21 +43,21 @@ include('./temples/header.php');
 					<div class="form-group">	
 						<div class="col-md-4" id="div_nombres">
 							<label for="nombre" class="control-label ">Nombres</label>
-							<input class="form-control" type="text" name="nombres" id="nombres" value="<?php echo $f['nombres'];?>" disabled>
+							<input class="form-control" type="text" name="nombres" id="nombres" value="" disabled>
 							<div class="text-danger" id="error">
 								<span id="error_nombres"></span>
 							</div>
 						</div>
 						<div class="col-md-4" id="div_apellidos">
 							<label for="apellidos" class="control-label ">Apellidos</label>
-							<input class="form-control" type="text" name="apellidos" id="apellidos" value="<?php echo $f['apellidos'];?>" disabled>
+							<input class="form-control" type="text" name="apellidos" id="apellidos" value="" disabled>
 							<div class="text-danger" id="error">
 								<span id="error_apellidos"></span>
 							</div>
 						</div>
 						<div class="col-md-4" id="div_area">
 							<label for="area" class="control-label ">Area</label>
-							<input class="form-control" type="text" name="area" id="area" value="<?php echo $f['area'];?>" disabled>
+							<input class="form-control" type="text" name="area" id="area" value="" disabled>
 							<div class="text-danger" id="error">
 								<span id="error_area"></span>
 							</div>
@@ -82,21 +68,21 @@ include('./temples/header.php');
 				<div class="form-group">
 					<div class="col-md-3" id="div_telefono">
 						<label for="telefono" class="control-label ">Telefono</label>
-						<input class="form-control" type="text" name="telefono" id="telefono" value="<?php echo $f['telefono'];?>" disabled>
+						<input class="form-control" type="text" name="telefono" id="telefono" value="" disabled>
 						<div class="text-danger" id="error">
 								<span id="error_telefono"></span>
 							</div>
 					</div>
 					<div class="col-md-3" id="div_celular">
 						<label for="celular" class="control-label ">Celular</label>
-						<input class="form-control" type="text" name="celular" id="celular" value="<?php echo $f['celular'];?>" disabled>
+						<input class="form-control" type="text" name="celular" id="celular" value="" disabled>
 						<div class="text-danger" id="error">
 								<span id="error_celular"></span>
 							</div>
 					</div>
 					<div class="col-md-6" id="div_email">
 						<label for="email" class="control-label ">Email</label>
-						<input class="form-control" type="email" id="email" name="email" placeholder="jane.doe@example.com" value="<?php echo $f['email'];?>" disabled>
+						<input class="form-control" type="email" id="email" name="email" placeholder="jane.doe@example.com" value="" disabled>
 						<div class="text-danger" id="error">
 								<span id="error_email"></span>
 							</div>
@@ -118,9 +104,7 @@ include('./temples/header.php');
 				</div>
 				</div>
 					</form>
-				<?php
-			}
-				?>
+	
 					</div>
 				</div>
 			</div>

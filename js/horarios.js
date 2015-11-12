@@ -44,8 +44,9 @@ $(".nuevo_horario").click(function(e){
 		$("#duplicado").addClass("hidden");
 
 	}else{
-	$.post('./controler/nuevo_horario.php',{
-				nom_horario:nom_horario
+	$.post('./controler/con_horarios.php',{
+				nom_horario:nom_horario,
+				caso:'nuevo'
 			}, function(a){
 				if (a==0) {
 					alert('EL horario se guardo con exito');

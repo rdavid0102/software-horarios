@@ -253,10 +253,11 @@ var regex = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
 function buscar_profesor(url,id_carga)
 {
 		var apellidos=$('#text_buscar_profesor').val();
-		$.post('./controler/cargar_lista_profesor.php',{
-			apellidos:apellidos
+		$.post('./controler/con_profesor.php',{
+			text_buscar:apellidos,
+			caso:'cargar_tabla'
 				},function(a){
-					//alert(a);
+				///	alert(a);
 
 					var json = eval(a);
 				/////si el vector viene con informacion

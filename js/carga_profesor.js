@@ -133,8 +133,9 @@ $(function() {
 				}
 		});
 
-		$.post('./controler/cargar_cursos.php',{
-				
+		$.post('./controler/con_curso.php',{
+			caso:'cargar_tabla',
+			buscar:''
 		}, function(e){
 			var json = eval(e);
 			$("#combo_cursos").empty();

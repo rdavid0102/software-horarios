@@ -92,6 +92,7 @@
 		public function Iniciar_horario()
 		{	 	
 				session_start();
+				unset($_SESSION['Horario']);
 				include ('../Datos/conexion.php');		
 				$re=mysqli_query($con, "SELECT * FROM horarios WHERE id_horario ='".$this->id."'")or die(mysqli_error());
 				while ($f=mysqli_fetch_array($re)) {
